@@ -1,0 +1,2 @@
+software-update:
+  pkg.uptodate
