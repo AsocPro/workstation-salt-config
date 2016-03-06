@@ -1,0 +1,3 @@
+[user]
+	name={{ pillar['git']['user.name'] }}
+	email={{ pillar['git']['user.email'] }}

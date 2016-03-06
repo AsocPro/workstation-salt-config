@@ -10,3 +10,10 @@ install-packages:
     - pkgs:
       - google-chrome-stable
       - vim-enhanced
+
+/home/{{ pillar['mainUser'] }}/.gitconfig:
+  file.managed:
+    - source: salt://files/configs/gitconfig
+    - user: {{ pillar['mainUser'] }}
+    - template: jinja
+    
