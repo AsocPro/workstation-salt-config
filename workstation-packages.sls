@@ -9,3 +9,4 @@ install-packages:
   pkg.installed:
     - pkgs:
       - google-chrome-stable
+      - vim-enhanced
