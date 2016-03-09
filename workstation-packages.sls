@@ -10,6 +10,8 @@ install-packages:
     - pkgs:
       - google-chrome-stable
       - vim-enhanced
+      - arduino
+      - ino
 
 /home/{{ pillar['mainUser'] }}/.gitconfig:
   file.managed:
