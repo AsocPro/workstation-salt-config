@@ -15,6 +15,7 @@ install-packages:
       - bsd-games
       - powertop
       - vpnc
+      - htop
 
 /home/{{ pillar['mainUser'] }}/.gitconfig:
   file.managed:
@@ -28,6 +29,11 @@ install-packages:
     - user: root
     - group: root
     - mode: 644
+
+/home/{{ pillar['mainUser'] }}/.xsession:
+  file.managed:
+    - source: salt://files/configs/xsession
+    - user: {{ pillar['mainUser'] }}
 
 /etc/vpnc/default.conf:
   file.managed:
