@@ -16,6 +16,7 @@ install-packages:
       - powertop
       - vpnc
       - htop
+      - gitflow
 
 /home/{{ pillar['mainUser'] }}/.gitconfig:
   file.managed:
