@@ -14,6 +14,7 @@ install-packages:
       - ino
       - bsd-games
       - powertop
+      - vpnc
 
 /home/{{ pillar['mainUser'] }}/.gitconfig:
   file.managed:
@@ -27,3 +28,11 @@ install-packages:
     - user: root
     - group: root
     - mode: 644
+
+/etc/vpnc/default.conf:
+  file.managed:
+    - source: salt://files/configs/vpnc.conf
+    - template: jinja
+    - user: root
+    - group: root
+    - mode: 600
