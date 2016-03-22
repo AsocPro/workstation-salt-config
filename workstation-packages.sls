@@ -12,6 +12,8 @@ install-packages:
       - vim-enhanced
       - arduino
       - ino
+      - bsd-games
+      - powertop
 
 /home/{{ pillar['mainUser'] }}/.gitconfig:
   file.managed:
