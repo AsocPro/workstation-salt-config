@@ -17,6 +17,7 @@ install-packages:
       - vpnc
       - htop
       - gitflow
+      - nmap
 
 /home/{{ pillar['mainUser'] }}/.gitconfig:
   file.managed:
