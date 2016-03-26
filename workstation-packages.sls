@@ -18,6 +18,7 @@ install-packages:
       - htop
       - gitflow
       - nmap
+      - gimp
 
 /home/{{ pillar['mainUser'] }}/.gitconfig:
   file.managed:
