@@ -5,3 +5,6 @@ Currently the only thing supported is fedora. I will branch it out and add compa
 TODO: Add CrashPlan Installation state.
 TODO: Come up with a better modularized organizational strategy for use with different types of machines
 TODO: Build from source programs that bleeding edge is the best (vim)
+TODO: ssh config file
+TODO: pidgin
+TODO: Install salt from develop and set up environment
