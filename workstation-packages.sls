@@ -19,6 +19,8 @@ install-packages:
       - gitflow
       - nmap
       - gimp
+      - gcc
+      - rdesktop
 
 /home/{{ pillar['mainUser'] }}/.gitconfig:
   file.managed:
