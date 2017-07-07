@@ -1,4 +1,3 @@
 base:
   '*':
-    - workstation-packages
-    - uptodate
+    - essentials
