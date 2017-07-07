@@ -1,0 +1,15 @@
+#git configuration
+git:
+  user.name: example
+  user.email: example@email.com
+
+#user that is used
+mainUser: username
+
+#vpnc configuration
+vpnc:
+  gateway: vpn.gateway.com
+  group-id: bestgroupevar
+  secret: MrRoboto
+  username: superuser
+  password: password
