@@ -1,0 +1,14 @@
+{%- if grains['os'] == 'MacOS' -%}
+
+{% set colehack = "{ function: file.recurse, path: /Library/Keyboard Layouts/ColeHack.new.bundle, name: ColeHack.new.bundle }"|load_yaml %}
+
+{% set user_path = '/Users' %}
+{% set admin_group = 'wheel' %}
+
+{%- elif grains['os'] == 'Fedora' -%}
+{% set colehack = "{ function: file.managed, path: /usr/share/X11/xkb/symbols/colehack, name: colehack.xkb }"|load_yaml %}
+
+{% set user_path = '/home' %}
+{% set admin_group = 'root' %}
+
+{%- endif -%}

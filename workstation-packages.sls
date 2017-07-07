@@ -1,17 +1,21 @@
+{% from 'paths.jinja' import user_path, admin_group %}
+{% from 'paths.jinja' import colehack %}
 
-/home/{{ pillar['mainUser'] }}/.gitconfig:
+{{ user_path }}/{{ pillar['mainUser'] }}/.gitconfig:
   file.managed:
     - source: salt://files/configs/gitconfig
     - user: {{ pillar['mainUser'] }}
     - template: jinja
     
-/usr/share/X11/xkb/symbols/colehack:
-  file.managed:
-    - source: salt://files/keyboard-layouts/colehack.xkb
+{{ colehack.path }}:
+  {{ colehack.function }}:
+    - source: salt://files/keyboard-layouts/{{ colehack.name }}
     - user: root
-    - group: root
-    - mode: 644
+    - group: {{ admin_group }}
+    - dir_mode: 755
+    - file_mode: 644
 
+{%- if grains.get('os_family') == 'linux' -%}
 /etc/vpnc/default.conf:
   file.managed:
     - source: salt://files/configs/vpnc.conf
@@ -19,3 +23,4 @@
     - user: root
     - group: root
     - mode: 600
+{%- endif -%}
