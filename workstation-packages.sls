@@ -1,26 +1,3 @@
-/etc/yum.repos.d/google-chrome.repo:
-  file.managed:
-    - source: salt://files/repos/google-chrome-yum.repo
-    - user: root
-    - group: root
-    - mode: 644
-
-install-packages:
-  pkg.installed:
-    - pkgs:
-      - google-chrome-stable
-      - vim-enhanced
-      - arduino
-      - ino
-      - bsd-games
-      - powertop
-      - vpnc
-      - htop
-      - gitflow
-      - nmap
-      - gimp
-      - gcc
-      - rdesktop
 
 /home/{{ pillar['mainUser'] }}/.gitconfig:
   file.managed:
@@ -34,11 +11,6 @@ install-packages:
     - user: root
     - group: root
     - mode: 644
-
-/home/{{ pillar['mainUser'] }}/.xsession:
-  file.managed:
-    - source: salt://files/configs/xsession
-    - user: {{ pillar['mainUser'] }}
 
 /etc/vpnc/default.conf:
   file.managed:
