@@ -1,0 +1,29 @@
+syntax on
+set background=dark
+set nocompatible
+filetype plugin indent on
+set number
+"set relativenumber
+set numberwidth=5
+hi LineNr ctermfg=black ctermbg=gray
+hi CursorLineNr ctermfg=gray ctermbg=black
+set showmatch
+set cursorline
+hi Comment ctermfg=magenta
+set wildmenu
+set statusline+=%F
+set laststatus=2
+
+noremap  :set list
+noremap  :set nolist
+
+
+
+let @s = ':%s/    /\t/g'
+let @g = ':!git diff %'
+let @a = ':!git add %'
+
+hi ps1CommentTodo ctermbg=magenta
+
+execute pathogen#infect()
+

@@ -11,6 +11,11 @@
   file.directory:
     - user: {{ pillar['mainUser'] }}
 
+{{ user_path }}/{{ pillar['mainUser'] }}/.vimrc:
+  file.managed:
+    - source: salt://files/configs/vimrc
+    - user: {{ pillar['mainUser'] }}
+
 get_pathogen_vim:
   git.latest:
     - name: https://github.com/tpope/vim-pathogen.git
