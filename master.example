@@ -1,0 +1,14 @@
+file_roots:
+  base:
+    - /srv/salt
+
+pillar_roots:
+  base:
+    - /srv/pillar
+
+engines:
+  - github:
+      port: PORT
+      address: IPADDRESS
+      ssl_crt: /etc/pki/tls/certs/localhost.crt
+      ssl_key: /etc/pki/tls/certs/localhost.key

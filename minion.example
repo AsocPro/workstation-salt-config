@@ -1,0 +1,5 @@
+master: master-location
+id: minion-id
+
+#Run a highstate when the minion is started
+startup_states: highstate
