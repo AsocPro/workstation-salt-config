@@ -44,7 +44,7 @@ get_salt_vim:
     - dir_mode: 755
     - file_mode: 644
 
-{%- if grains.get('os_family') == 'linux' -%}
+{% if grains.get('os_family') == 'linux' %}
 /etc/vpnc/default.conf:
   file.managed:
     - source: salt://files/configs/vpnc.conf
