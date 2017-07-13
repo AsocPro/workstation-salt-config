@@ -1,40 +1,43 @@
 {% from 'paths.jinja' import user_path, admin_group %}
 {% from 'paths.jinja' import colehack %}
 
-{{ user_path }}/{{ pillar['mainUser'] }}/.gitconfig:
+{% set mainUser = 'superuser' %}
+
+
+{{ user_path }}/{{ mainUser }}/.gitconfig:
   file.managed:
     - source: salt://files/configs/gitconfig
-    - user: {{ pillar['mainUser'] }}
+    - user: {{ mainUser }}
     - template: jinja
 
-{{ user_path }}/{{ pillar['mainUser'] }}/.resources:
+{{ user_path }}/{{ mainUser }}/.resources:
   file.directory:
-    - user: {{ pillar['mainUser'] }}
+    - user: {{ mainUser }}
 
-{{ user_path }}/{{ pillar['mainUser'] }}/.vimrc:
+{{ user_path }}/{{ mainUser }}/.vimrc:
   file.managed:
     - source: salt://files/configs/vimrc
-    - user: {{ pillar['mainUser'] }}
+    - user: {{ mainUser }}
 
 get_pathogen_vim:
   git.latest:
     - name: https://github.com/tpope/vim-pathogen.git
-    - target: {{ user_path }}/{{ pillar['mainUser'] }}/.resources/pathogen
+    - target: {{ user_path }}/{{ mainUser }}/.resources/pathogen
 
-{{ user_path }}/{{ pillar['mainUser'] }}/.vim/autoload/pathogen.vim:
+{{ user_path }}/{{ mainUser }}/.vim/autoload/pathogen.vim:
   file.symlink:
-    - target: {{ user_path }}/{{ pillar['mainUser'] }}/.resources/pathogen/autoload/pathogen.vim
-    - user: {{ pillar['mainUser'] }}
+    - target: {{ user_path }}/{{ mainUser }}/.resources/pathogen/autoload/pathogen.vim
+    - user: {{ mainUser }}
     - makedirs: True
 
-{{ user_path }}/{{ pillar['mainUser'] }}/.vim/bundle:
+{{ user_path }}/{{ mainUser }}/.vim/bundle:
   file.directory:
-    - user: {{ pillar['mainUser'] }}
+    - user: {{ mainUser }}
 
 get_salt_vim:
   git.latest:
     - name: https://github.com/saltstack/salt-vim.git
-    - target: {{ user_path }}/{{ pillar['mainUser'] }}/.vim/bundle/salt-vim
+    - target: {{ user_path }}/{{ mainUser }}/.vim/bundle/salt-vim
     
 {{ colehack.path }}:
   {{ colehack.function }}:
