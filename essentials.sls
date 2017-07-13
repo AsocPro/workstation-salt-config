@@ -1,50 +1,46 @@
-{% from 'paths.jinja' import user_path, admin_group %}
-{% from 'paths.jinja' import colehack %}
-
-{{ user_path }}/{{ pillar['mainUser'] }}/.gitconfig:
+/home/superuser/.gitconfig:
   file.managed:
     - source: salt://files/configs/gitconfig
-    - user: {{ pillar['mainUser'] }}
+    - user: superuser
     - template: jinja
 
-{{ user_path }}/{{ pillar['mainUser'] }}/.resources:
+/home/superuser/.resources:
   file.directory:
-    - user: {{ pillar['mainUser'] }}
+    - user: superuser
 
-{{ user_path }}/{{ pillar['mainUser'] }}/.vimrc:
+/home/superuser/.vimrc:
   file.managed:
     - source: salt://files/configs/vimrc
-    - user: {{ pillar['mainUser'] }}
+    - user: superuser
 
 get_pathogen_vim:
   git.latest:
     - name: https://github.com/tpope/vim-pathogen.git
-    - target: {{ user_path }}/{{ pillar['mainUser'] }}/.resources/pathogen
+    - target: /home/superuser/.resources/pathogen
 
-{{ user_path }}/{{ pillar['mainUser'] }}/.vim/autoload/pathogen.vim:
+/home/superuser/.vim/autoload/pathogen.vim:
   file.symlink:
-    - target: {{ user_path }}/{{ pillar['mainUser'] }}/.resources/pathogen/autoload/pathogen.vim
-    - user: {{ pillar['mainUser'] }}
+    - target: /home/superuser/.resources/pathogen/autoload/pathogen.vim
+    - user: superuser
     - makedirs: True
 
-{{ user_path }}/{{ pillar['mainUser'] }}/.vim/bundle:
+/home/superuser/.vim/bundle:
   file.directory:
-    - user: {{ pillar['mainUser'] }}
+    - user: superuser
 
 get_salt_vim:
   git.latest:
     - name: https://github.com/saltstack/salt-vim.git
-    - target: {{ user_path }}/{{ pillar['mainUser'] }}/.vim/bundle/salt-vim
+    - target: /home/superuser/.vim/bundle/salt-vim
     
-{{ colehack.path }}:
-  {{ colehack.function }}:
-    - source: salt://files/keyboard-layouts/{{ colehack.name }}
+/usr/share/X11/xkb/symbols/colehack:
+  file.managed:
+    - source: salt://files/keyboard-layouts/colehack
     - user: root
     - group: {{ admin_group }}
     - dir_mode: 755
     - file_mode: 644
 
-{% if grains.get('os_family') == 'linux' %}
 /etc/vpnc/default.conf:
   file.managed:
     - source: salt://files/configs/vpnc.conf
@@ -52,4 +48,3 @@ get_salt_vim:
     - user: root
     - group: root
     - mode: 600
-{%- endif -%}
